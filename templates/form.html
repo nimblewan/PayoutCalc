@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form method="POST">
+  Total number of players: <input type="number" name="total_players" min="1" value="{{ total_players_default }}" required><br>
+  Entry fee: <input type="number" name="entry_fee" min="1" value="{{ entry_fee_default }}" required><br>
+  Percent of field paid: <input type="number" name="percent_field_paid" min="1" max="100" value="{{ percent_field_paid_default }}" required><br>
+  <input type="submit" value="Submit">
+</form>
+<p>Total Purse: ${{ purse }}</p>
+{% if winners %}
+<table>
+  <tr>
+    <th>Place</th>
+    <th>Prize</th>
+  </tr>
+  {% for i in range(winners) %}
+  <tr>
+    <td>{{ i+1 }}</td>
+    <td>${{ prizes[i] }}</td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>Total</td>
+    <td>${{ total_payout }}</td>
+  </tr>
+</table>
+{% endif %}
+</body>
+</html>
